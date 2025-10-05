@@ -1,0 +1,57 @@
+{
+  "project": "yahoofin",
+  "cloud_vendor": "aws",
+  "model_type": "pytorch_lstm",
+  "training_params": {
+    "epochs": 10,
+    "batch_size": 32,
+    "hidden_size": 32
+  },
+  "features": ["Open", "High", "Low", "Close", "Volume"],
+  "target": "Close",
+  "train_split": 0.8,
+  "model_artifact_path": "models/pytorch_lstm",
+  "endpoint_name": "yahoofin-endpoint",
+  "promotion": {
+    "dev": {
+      "s3_bucket": "my-dev-bucket",
+      "s3_raw_path": "yahoofin/raw/",
+      "s3_processed_path": "yahoofin/processed/",
+      "sagemaker": {
+        "instance_type": "ml.t2.medium",
+        "region": "us-east-1",
+        "container_image": "763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-inference:2.1.0-cpu-py39-ubuntu20.04-sagemaker"
+      }
+    },
+    "qa": {
+      "s3_bucket": "my-qa-bucket",
+      "s3_raw_path": "yahoofin/raw/",
+      "s3_processed_path": "yahoofin/processed/",
+      "sagemaker": {
+        "instance_type": "ml.t2.medium",
+        "region": "us-east-1",
+        "container_image": "763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-inference:2.1.0-cpu-py39-ubuntu20.04-sagemaker"
+      }
+    },
+    "staging": {
+      "s3_bucket": "my-staging-bucket",
+      "s3_raw_path": "yahoofin/raw/",
+      "s3_processed_path": "yahoofin/processed/",
+      "sagemaker": {
+        "instance_type": "ml.t2.medium",
+        "region": "us-east-1",
+        "container_image": "763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-inference:2.1.0-cpu-py39-ubuntu20.04-sagemaker"
+      }
+    },
+    "prod": {
+      "s3_bucket": "my-prod-bucket",
+      "s3_raw_path": "yahoofin/raw/",
+      "s3_processed_path": "yahoofin/processed/",
+      "sagemaker": {
+        "instance_type": "ml.m5.large",
+        "region": "us-east-1",
+        "container_image": "763104351884.dkr.ecr.us-east-1.amazonaws.com/pytorch-inference:2.1.0-cpu-py39-ubuntu20.04-sagemaker"
+      }
+    }
+  }
+}
